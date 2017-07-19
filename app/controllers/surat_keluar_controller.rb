@@ -1,0 +1,2 @@
+class SuratKeluarController < ApplicationController
+end
