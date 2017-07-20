@@ -1,0 +1,16 @@
+<h1>Daftar Surat Keluar</h1>
+ 
+<table>
+  <tr>
+    <th>Keterangan</th>
+    <th>Lampiran</th>
+  </tr>
+ 
+  <% @surat_keluar.each do |surat_keluar| %>
+    <tr>
+      <td><%= surat_keluar.keterangan %></td>
+      <td><%= surat_keluar.lampiran %></td>
+      <td><%= link_to 'Tampilkan', surat_keluar_path(surat_keluar) %></td>
+    </tr>
+  <% end %>
+</table>
