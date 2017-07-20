@@ -1,4 +1,8 @@
 class SuratKeluarController < ApplicationController
+  def index
+    @surat_keluar = SuratKeluar.all
+  end
+  
   def show
     @surat_keluar = SuratKeluar.find(params[:id])
   end
