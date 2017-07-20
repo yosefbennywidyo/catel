@@ -1,6 +1,6 @@
 <h1>Edit Surat Keluar</h1>
 
-<%= form_for :surat_keluar, url: surat_keluar_index_path do |f| %>
+<%= form_for (@surat_keluar) do |f| %>
 
   <% if @surat_keluar.errors.any? %>
     <div id="error_explanation">
