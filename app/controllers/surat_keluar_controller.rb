@@ -33,12 +33,19 @@ class SuratKeluarController < ApplicationController
   
   def update
     @surat_keluar = SuratKeluar.find(params[:id])
-    
+ 
     if @surat_keluar.update(surat_keluar_params)
       redirect_to @surat_keluar
     else
       render 'edit'
     end
+  end
+  
+  def destroy
+    @surat_keluar = SuratKeluar.find(params[:id])
+    @surat_keluar.destroy
+ 
+    redirect_to surat_keluar_index_url
   end
   
   # the method is made private to make sure it can't be called outside its intended context
