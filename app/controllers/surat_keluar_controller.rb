@@ -8,6 +8,7 @@ class SuratKeluarController < ApplicationController
   end
   
   def new
+    @surat_keluar = SuratKeluar.new
   end
   
   def create
@@ -18,10 +19,12 @@ class SuratKeluarController < ApplicationController
     @surat_keluar = SuratKeluar.new(surat_keluar_params)
     
     # Saving data in the database
-    @surat_keluar.save
-    
-    # Redirect the user to the show action
-    redirect_to @surat_keluar
+    if @surat_keluar.save
+      # Redirect the user to the show action
+      redirect_to @surat_keluar
+    else
+      render 'new'
+    end
   end
   
   # the method is made private to make sure it can't be called outside its intended context
