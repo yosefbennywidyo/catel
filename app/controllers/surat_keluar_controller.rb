@@ -11,6 +11,10 @@ class SuratKeluarController < ApplicationController
     @surat_keluar = SuratKeluar.new
   end
   
+  def edit
+    @surat_keluar = SuratKeluar.find(params[:id])
+  end
+  
   def create
     # See paramaters look like
     # render plain: params[:surat_keluar].inspect
