@@ -1,4 +1,8 @@
 class SuratKeluarController < ApplicationController
+  def show
+    @surat_keluar = SuratKeluar.find(params[:id])
+  end
+  
   def new
   end
   
@@ -17,7 +21,7 @@ class SuratKeluarController < ApplicationController
   end
   
   # the method is made private to make sure it can't be called outside its intended context
-  # factored out into its own method so it can be reused by multiple actions in the same controller
+  # Factored out into its own method so it can be reused by multiple actions in the same controller
   private
   def surat_keluar_params
     params.require(:surat_keluar).permit(:keterangan, :lampiran)
