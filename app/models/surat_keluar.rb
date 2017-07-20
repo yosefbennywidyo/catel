@@ -1,0 +1,2 @@
+class SuratKeluar < ApplicationRecord
+end
