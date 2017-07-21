@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'beranda/index'
   
   resources :surat_keluar
