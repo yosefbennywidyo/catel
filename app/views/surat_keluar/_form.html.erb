@@ -1,0 +1,29 @@
+<%= form_for @surat_keluar do |f| %>
+
+  <% if @surat_keluar.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@surat_keluar.errors.count, "error") %> menyebabkan Surat Keluar tidak dapat disimpan:
+      </h2>
+      <ul>
+        <% @surat_keluar.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :keterangan %><br>
+    <%= f.text_area :keterangan %>
+  </p>
+ 
+  <p>
+    <%= f.label :lampiran %><br>
+    <%= f.file_field :lampiran %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
