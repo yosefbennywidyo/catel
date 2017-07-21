@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # ADD Gem HERE!
 gem 'materialize-sass'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
