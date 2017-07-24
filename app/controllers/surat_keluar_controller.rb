@@ -11,15 +11,15 @@ class SuratKeluarController < ApplicationController
   end
   
   def show
-    @surat_keluar = SuratKeluar.find(params[:id])
+    @surat_keluar = current_user.surat_keluar.find(params[:id])
   end
   
   def new
-    @surat_keluar = SuratKeluar.new
+    @surat_keluar = current_user.surat_keluar.new
   end
   
   def edit
-    @surat_keluar = SuratKeluar.find(params[:id])
+    @surat_keluar = current_user.surat_keluar.find(params[:id])
   end
   
   def create
@@ -27,7 +27,7 @@ class SuratKeluarController < ApplicationController
     # render plain: params[:surat_keluar].inspect
     
     # Define @surat_keluar as new SuratKeluar
-    @surat_keluar = current_user.SuratKeluar.new(surat_keluar_params)
+    @surat_keluar = current_user.surat_keluar.new(surat_keluar_params)
     
     # Saving data in the database
     if @surat_keluar.save
@@ -39,7 +39,7 @@ class SuratKeluarController < ApplicationController
   end
   
   def update
-    @surat_keluar = SuratKeluar.find(params[:id])
+    @surat_keluar = current_user.surat_keluar.find(params[:id])
  
     if @surat_keluar.update(surat_keluar_params)
       redirect_to @surat_keluar
@@ -49,7 +49,7 @@ class SuratKeluarController < ApplicationController
   end
   
   def destroy
-    @surat_keluar = SuratKeluar.find(params[:id])
+    @surat_keluar = current_user.surat_keluar.find(params[:id])
     @surat_keluar.destroy
  
     redirect_to surat_keluar_index_url

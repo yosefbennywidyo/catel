@@ -1,5 +1,5 @@
 <h1>Membuat Surat Keluar</h1>
-
-<%= render 'form' %>
-
+<%= form_for :surat_keluar, url: surat_keluar_index_path do |f| %>
+<%= render 'form', f: f %>
+<% end %>
 <%= link_to 'Kembali ke Daftar Surat Keluar', surat_keluar_index_url, class: "btn" %>
