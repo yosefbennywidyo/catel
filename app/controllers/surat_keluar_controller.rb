@@ -1,6 +1,11 @@
 class SuratKeluarController < ApplicationController
   def index
-    @surat_keluar = SuratKeluar.all
+    # @surat_keluar = SuratKeluar.all
+    @konsep = current_user.SuratKeluar.where(status: "Konsep")
+    @koreksi_kasie_1 = current_user.SuratKeluar.where(status: "Koreksi dari KASIE ke-I")
+    @revisi_kasie_1 = current_user.SuratKeluar.where(status: "Revisi untuk KASIE ke-I")
+    @koreksi_kasie_2 = current_user.SuratKeluar.where(status: "Koreksi dari KASIE ke-II")
+    @revisi_kasie_2 = current_user.SuratKeluar.where(status: "Revisi untuk KASIE ke-II")
   end
   
   def show
