@@ -52,6 +52,6 @@ class SuratKeluarController < ApplicationController
   # Factored out into its own method so it can be reused by multiple actions in the same controller
   private
   def surat_keluar_params
-    params.require(:surat_keluar).permit(:keterangan, :lampiran)
+    params.require(:surat_keluar).permit(:keterangan, :lampiran, :status)
   end
 end
