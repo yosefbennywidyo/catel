@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'beranda/index'
   
-  resources :surat_keluar
+  resources :surat_keluar do
+    member do
+      put :change
+    end
+  end
   
   root 'beranda#index'
 

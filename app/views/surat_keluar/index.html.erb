@@ -4,13 +4,30 @@
     <h1>Daftar Surat Keluar</h1>
       <div class="col s12">  
         <h2>Konsep</h2>
-        <% @surat_keluar.each do |surat_keluar| %>
+        <% @konsep.each do |surat_keluar| %>
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <%= surat_keluar.keterangan %>
             <%= surat_keluar.lampiran %>
             <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar) %>
             <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar) %>
+            <%= link_to 'Kirim ke KASIE', change_surat_keluar_path(surat_keluar, status: 'koreksi KASIE ke-I'), method: :put %>
+            <%= link_to 'Hapus', surat_keluar_path(surat_keluar),
+                    method: :delete,
+                    data: { confirm: 'Apakah Anda yakin?' } %>
+          </div>
+        </div>
+        <% end %>
+        <div class="col s12">  
+        <h2>Koreksi KASIE ke-I</h2>
+        <% @koreksi_kasie_1.each do |surat_keluar| %>
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <%= surat_keluar.keterangan %>
+            <%= surat_keluar.lampiran %>
+            <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar) %>
+            <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar) %>
+            <%= link_to 'Kirim ke KASIE', change_surat_keluar_path(surat_keluar, status: 'koreksi KASIE ke-I'), method: :put %>
             <%= link_to 'Hapus', surat_keluar_path(surat_keluar),
                     method: :delete,
                     data: { confirm: 'Apakah Anda yakin?' } %>

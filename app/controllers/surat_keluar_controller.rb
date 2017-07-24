@@ -3,11 +3,11 @@ class SuratKeluarController < ApplicationController
   
   def index
     @surat_keluar = current_user.surat_keluar
-    @konsep = current_user.surat_keluar.where(status: "Konsep")
-    @koreksi_kasie_1 = current_user.surat_keluar.where(status: "Koreksi dari KASIE ke-I")
-    @revisi_kasie_1 = current_user.surat_keluar.where(status: "Revisi untuk KASIE ke-I")
-    @koreksi_kasie_2 = current_user.surat_keluar.where(status: "Koreksi dari KASIE ke-II")
-    @revisi_kasie_2 = current_user.surat_keluar.where(status: "Revisi untuk KASIE ke-II")
+    @konsep = current_user.surat_keluar.where(status: "konsep")
+    @koreksi_kasie_1 = current_user.surat_keluar.where(status: "koreksi KASIE ke-I")
+    @revisi_kasie_1 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-I")
+    @koreksi_kasie_2 = current_user.surat_keluar.where(status: "koreksi KASIE ke-II")
+    @revisi_kasie_2 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-II")
   end
   
   def show
@@ -47,6 +47,14 @@ class SuratKeluarController < ApplicationController
       render 'edit'
     end
   end
+  
+  def change
+    @surat_keluar = current_user.surat_keluar.find(params[:id])
+    @surat_keluar.update_attributes(status: params[:status])
+      respond_to do |format| 
+      format.html { redirect_to surat_keluar_path, notice: "Status updated"}
+    end
+  end  
   
   def destroy
     @surat_keluar = current_user.surat_keluar.find(params[:id])
