@@ -7,8 +7,14 @@
           <p>Untuk mulai menggunakannya, klik salah satu tombol yang tersedia di bawah ini.</p>
       </div>
       <div class="card-action">
-        <%= link_to 'Daftar', "#", class: "btn" %>
-        <%= link_to 'Masuk', "#", class: "btn" %>
+        <% if current_user %>
+          <%= link_to 'Edit Akun', edit_user_registration_path, class: "btn"  %>
+          <%= link_to 'Surat Keluar', surat_keluar_index_url, class: "btn"  %>
+          <%= link_to 'Keluar', destroy_user_session_path, method: :delete, class: "btn"  %>
+        <% else %>
+          <%= link_to 'Masuk', new_user_session_path, class: "btn"  %>
+          <%= link_to 'Daftar', new_user_registration_path, class: "btn"  %>
+        <% end %>
       </div>
     </div>
   </div>
