@@ -1,22 +1,24 @@
-<h1>Daftar Surat Keluar</h1>
- 
-<table>
-  <tr>
-    <th>Keterangan</th>
-    <th>Lampiran</th>
-  </tr>
- 
-  <% @surat_keluar.each do |surat_keluar| %>
-    <tr>
-      <td><%= surat_keluar.keterangan %></td>
-      <td><%= surat_keluar.lampiran %></td>
-      <td><%= link_to 'Tampilkan', surat_keluar_path(surat_keluar) %></td>
-      <td><%= link_to 'Edit', edit_surat_keluar_url(surat_keluar) %></td>
-      <td><%= link_to 'Hapus', surat_keluar_path(surat_keluar),
-              method: :delete,
-              data: { confirm: 'Apakah Anda yakin?' } %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to 'Membuat Surat Keluar', new_surat_keluar_url, class: "btn" %>
-<%= link_to 'Ke Beranda', beranda_index_url, class: "btn" %>
+<p id="notice"><%= notice %></p>
+<div class="container">  
+  <div class="row">
+    <h1>Daftar Surat Keluar</h1>
+      <div class="col s12">  
+        <h2>Konsep</h2>
+        <% @surat_keluar.each do |surat_keluar| %>
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <%= surat_keluar.keterangan %>
+            <%= surat_keluar.lampiran %>
+            <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar) %>
+            <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar) %>
+            <%= link_to 'Hapus', surat_keluar_path(surat_keluar),
+                    method: :delete,
+                    data: { confirm: 'Apakah Anda yakin?' } %>
+          </div>
+        </div>
+        <% end %>
+
+    <%= link_to 'Membuat Surat Keluar', new_surat_keluar_url, class: "btn" %>
+    <%= link_to 'Ke Beranda', beranda_index_url, class: "btn" %>
+  </div>
+</div>
