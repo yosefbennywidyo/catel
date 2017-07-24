@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724045523) do
+ActiveRecord::Schema.define(version: 20170724061036) do
 
   create_table "surat_keluars", force: :cascade do |t|
     t.text "keterangan"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170724045523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "konsep"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
