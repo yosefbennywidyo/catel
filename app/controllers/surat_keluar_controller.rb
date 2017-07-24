@@ -2,12 +2,12 @@ class SuratKeluarController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @surat_keluar = current_user.SuratKeluar
-    @konsep = current_user.SuratKeluar.where(status: "Konsep")
-    @koreksi_kasie_1 = current_user.SuratKeluar.where(status: "Koreksi dari KASIE ke-I")
-    @revisi_kasie_1 = current_user.SuratKeluar.where(status: "Revisi untuk KASIE ke-I")
-    @koreksi_kasie_2 = current_user.SuratKeluar.where(status: "Koreksi dari KASIE ke-II")
-    @revisi_kasie_2 = current_user.SuratKeluar.where(status: "Revisi untuk KASIE ke-II")
+    @surat_keluar = current_user.surat_keluar
+    @konsep = current_user.surat_keluar.where(status: "Konsep")
+    @koreksi_kasie_1 = current_user.surat_keluar.where(status: "Koreksi dari KASIE ke-I")
+    @revisi_kasie_1 = current_user.surat_keluar.where(status: "Revisi untuk KASIE ke-I")
+    @koreksi_kasie_2 = current_user.surat_keluar.where(status: "Koreksi dari KASIE ke-II")
+    @revisi_kasie_2 = current_user.surat_keluar.where(status: "Revisi untuk KASIE ke-II")
   end
   
   def show
