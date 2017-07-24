@@ -25,7 +25,7 @@ class SuratKeluarController < ApplicationController
     # render plain: params[:surat_keluar].inspect
     
     # Define @surat_keluar as new SuratKeluar
-    @surat_keluar = SuratKeluar.new(surat_keluar_params)
+    @surat_keluar = current_user.SuratKeluar.new(surat_keluar_params)
     
     # Saving data in the database
     if @surat_keluar.save
