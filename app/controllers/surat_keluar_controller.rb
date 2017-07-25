@@ -1,6 +1,5 @@
 class SuratKeluarController < ApplicationController
-  before_action :authenticate_user!
-  
+
   def index
     @surat_keluar = current_user.surat_keluar
     @konsep = current_user.surat_keluar.where(status: "konsep")
