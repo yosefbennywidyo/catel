@@ -1,16 +1,25 @@
 class SuratKeluarController < ApplicationController
 
   def index
-    @surat_keluar = current_user.surat_keluar
-    @konsep = current_user.surat_keluar.where(status: "konsep")
-    @koreksi_kasie_1 = current_user.surat_keluar.where(status: "koreksi KASIE ke-I")
-    @revisi_kasie_1 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-I")
-    @koreksi_kasie_2 = current_user.surat_keluar.where(status: "koreksi KASIE ke-II")
-    @revisi_kasie_2 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-II")
+    @surat_keluar = SuratKeluar.all()
+    
+    #if current_user.email = "ugel@kemenagsumteng.go.id"
+      @surat_keluar_konsep = @surat_keluar.where(status: ["konsep", "revisi untuk KTU ke-I", "revisi untuk KTU ke-II", "revisi untuk Kepala ke-I", "revisi untuk Kepala ke-II"])
+    #elsif current_user.email = "ktu@kemenagsumteng.go.id"
+      @surat_keluar_ktu = @surat_keluar.where(status: ["koreksi KTU ke-I", "koreksi KTU ke-II", "fix KTU", "untuk Kepala"])
+    #else
+      @surat_keluar_kepala = @surat_keluar.where(status: ["koreksi Kepala ke-I", "koreksi Kepala ke-II", "fix Kepala"])
+    #end
+    #@surat_keluar = current_user.surat_keluar
+    #@konsep = current_user.surat_keluar.where(status: "konsep")
+    #@koreksi_kasie_1 = current_user.surat_keluar.where(status: "koreksi KASIE ke-I")
+    #@revisi_kasie_1 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-I")
+    #@koreksi_kasie_2 = current_user.surat_keluar.where(status: "koreksi KASIE ke-II")
+    #@revisi_kasie_2 = current_user.surat_keluar.where(status: "revisi untuk KASIE ke-II")
   end
   
   def show
-    @surat_keluar = current_user.surat_keluar.find(params[:id])
+    @surat_keluar = SuratKeluar.find(params[:id])
   end
   
   def new
@@ -48,10 +57,11 @@ class SuratKeluarController < ApplicationController
   end
   
   def change
-    @surat_keluar = current_user.surat_keluar.find(params[:id])
+    @surat_keluar = SuratKeluar.find(params[:id])
     @surat_keluar.update_attributes(status: params[:status])
       respond_to do |format| 
       format.html { redirect_to surat_keluar_path, notice: "Status updated"}
+      
     end
   end  
   
