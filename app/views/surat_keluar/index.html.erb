@@ -4,63 +4,249 @@
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-<div class="container">  
-  <div class="row">
     <h1>Daftar Surat Keluar</h1>
-      <div class="col s12">
+      <div class="divider"></div>
+        <%= current_user.email %>
         <% if current_user.email === "ugel@kemenagsumteng.go.id" %>
-          <h2>Konsep Surat Keluar</h2>
+        <h2>Konsep Surat Keluar</h2>
+          <div class="divider"></div>
           <% @surat_keluar_konsep.each do |surat_keluar| %>
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <%= surat_keluar.keterangan %>
-              <%= surat_keluar.lampiran %>
-              <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar), class: "btn" %>
-              <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar), class: "btn" %>
-              <%= link_to 'Kirim ke KASIE', change_surat_keluar_path(surat_keluar, status: 'koreksi KTU ke-I'), class: "btn", method: :put %>
-              <%= link_to 'Hapus', surat_keluar_path(surat_keluar), class: "btn",
-                      method: :delete,
-                      data: { confirm: 'Apakah Anda yakin?' } %>
-            </div>
-          </div>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <p>Keterangan: <%= surat_keluar.keterangan %></p>
+                    <p>Lampiran: <%= surat_keluar.lampiran %></p>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'revisi KTU'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                      <%= link_to surat_keluar_path(surat_keluar), method: :delete, data: { confirm: 'Apakah Anda yakin?' } do %>
+                        <i class="medium material-icons">delete_forever</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <% end %>
+            </div>
+            
+        <h2>Revisi dari KTU</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_koreksi_ktu.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                  <%= surat_keluar.keterangan %>
+                  <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'fix KTU'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+            
+        <h2>Fix dari KTU</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_konsep_kepala.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'revisi Kepala'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+            
+        <h2>Revisi dari Kepala</h2>
+          <div class="divider"></div>
+            <% @surat_keluar_koreksi_kepala.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'fix Kepala'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+            
+        <h2>Konsep Surat Keluar Final</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_siap_cetak.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+            
+          <%= link_to 'Membuat Surat Keluar', new_surat_keluar_url, class: "btn" %>
+          
+          
         <% elsif current_user.email === "ktu@kemenagsumteng.go.id" %>
-          <h2>Koreksi KTU</h2>
-          <% @surat_keluar_ktu.each do |surat_keluar| %>
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <%= surat_keluar.keterangan %>
-              <%= surat_keluar.lampiran %>
-              <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar), class: "btn" %>
-              <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar), class: "btn" %>
-              <%= link_to 'Kirim untuk Revisi', change_surat_keluar_path(surat_keluar, status: 'revisi untuk KTU ke-I'), class: "btn", method: :put %>
-              <%= link_to 'Hapus', surat_keluar_path(surat_keluar), class: "btn",
-                      method: :delete,
-                      data: { confirm: 'Apakah Anda yakin?' } %>
-            </div>
-          </div>
+        <h2>Pengajuan Konsep Surat</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_revisi_ktu.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'koreksi KTU'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <% end %>
-        <% elsif current_user.email === "ktu@kemenagsumteng.go.id" %>
-          <h2>Koreksi Kepala</h2>
-          <% @surat_keluar_kepala.each do |surat_keluar| %>
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <%= surat_keluar.keterangan %>
-              <%= surat_keluar.lampiran %>
-              <%= link_to 'Tampilkan', surat_keluar_path(surat_keluar), class: "btn" %>
-              <%= link_to 'Edit', edit_surat_keluar_url(surat_keluar), class: "btn" %>
-              <%= link_to 'Kirim untuk Revisi', change_surat_keluar_path(surat_keluar, status: 'revisi untuk KTU ke-I'), class: "btn", method: :put %>
-              <%= link_to 'Hapus', surat_keluar_path(surat_keluar), class: "btn",
-                      method: :delete,
-                      data: { confirm: 'Apakah Anda yakin?' } %>
             </div>
-          </div>
+        <h2>Pengajuan Revisi Surat</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_fix_ktu.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'konsep Kepala'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <% end %>
+            </div>
+
+        <% elsif current_user.email === "kepala@kemenagsumteng.go.id" %>
+          <h2>Pengajuan Konsep Surat</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_revisi_kepala.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'koreksi Kepala'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+          <h2>Pengajuan Revisi Surat</h2>
+          <div class="divider"></div>
+          <% @surat_keluar_fix_kepala.each do |surat_keluar| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <%= surat_keluar.keterangan %>
+                    <%= surat_keluar.lampiran %>
+                    <div class="card-action">
+                      <%= link_to surat_keluar_path(surat_keluar) do %>
+                        <i class="medium material-icons">pageview</i>
+                      <% end %>
+                      <%= link_to edit_surat_keluar_url(surat_keluar) do %>
+                        <i class="medium material-icons">mode_edit</i>
+                      <% end %>
+                      <%= link_to change_surat_keluar_path(surat_keluar, status: 'siap cetak'), method: :put do %>
+                        <i class="medium material-icons">send</i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+            </div>
+
         <% else %>
          <p>Anda belum terdata</p>
         <% end %>
-
-    <%= link_to 'Membuat Surat Keluar', new_surat_keluar_url, class: "btn" %>
     <%= link_to 'Ke Beranda', beranda_index_url, class: "btn" %>
   </div>
-</div>
