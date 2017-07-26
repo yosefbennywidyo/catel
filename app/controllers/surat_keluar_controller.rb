@@ -4,11 +4,17 @@ class SuratKeluarController < ApplicationController
     @surat_keluar = SuratKeluar.all()
     
     #if current_user.email = "ugel@kemenagsumteng.go.id"
-      @surat_keluar_konsep = @surat_keluar.where(status: ["konsep", "revisi untuk KTU ke-I", "revisi untuk KTU ke-II", "revisi untuk Kepala ke-I", "revisi untuk Kepala ke-II"])
+    @surat_keluar_konsep = @surat_keluar.where(status: "konsep")
+    @surat_keluar_koreksi_ktu = @surat_keluar.where(status: "koreksi KTU")
+    @surat_keluar_konsep_kepala = @surat_keluar.where(status: "konsep Kepala")
+    @surat_keluar_koreksi_kepala = @surat_keluar.where(status: "koreksi Kepala")
+    @surat_keluar_siap_cetak = @surat_keluar.where(status: "siap cetak")
     #elsif current_user.email = "ktu@kemenagsumteng.go.id"
-      @surat_keluar_ktu = @surat_keluar.where(status: ["koreksi KTU ke-I", "koreksi KTU ke-II", "fix KTU", "untuk Kepala"])
+    @surat_keluar_revisi_ktu = @surat_keluar.where(status: "revisi KTU")
+    @surat_keluar_fix_ktu = @surat_keluar.where(status: "fix KTU")
     #else
-      @surat_keluar_kepala = @surat_keluar.where(status: ["koreksi Kepala ke-I", "koreksi Kepala ke-II", "fix Kepala"])
+    @surat_keluar_revisi_kepala = @surat_keluar.where(status: "revisi Kepala")
+    @surat_keluar_fix_kepala = @surat_keluar.where(status: "fix Kepala")
     #end
     #@surat_keluar = current_user.surat_keluar
     #@konsep = current_user.surat_keluar.where(status: "konsep")
