@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724061036) do
+ActiveRecord::Schema.define(version: 20170727004329) do
 
   create_table "surat_keluars", force: :cascade do |t|
     t.text "keterangan"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20170724061036) do
     t.datetime "updated_at", null: false
     t.string "status", default: "konsep"
     t.integer "user_id"
+    t.string "lampiran_file_name"
+    t.string "lampiran_content_type"
+    t.integer "lampiran_file_size"
+    t.datetime "lampiran_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
