@@ -5,7 +5,10 @@
  
 <p>
   <strong>Lampiran:</strong>
-  <%= @surat_keluar.lampiran %>
+  <%= @surat_keluar.lampiran_file_name %>
 </p>
+
+
+<%= link_to "Download Lampiran", @surat_keluar.lampiran.url, class: "btn btn-sm btn-default", target: "_blank" %>
 
 <%= link_to 'Kembali ke Daftar Surat Keluar', surat_keluar_index_url, class: "btn"  %>
