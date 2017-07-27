@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170727004329) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "surat_keluars", force: :cascade do |t|
     t.text "keterangan"
     t.text "lampiran"
