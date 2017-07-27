@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass'
 gem 'simple_form'
 gem 'devise'
+gem "paperclip"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
