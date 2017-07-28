@@ -33,7 +33,7 @@ class SuratKeluarController < ApplicationController
   end
   
   def edit
-    @surat_keluar = current_user.surat_keluar.find(params[:id])
+    @surat_keluar = SuratKeluar.find(params[:id])
   end
   
   def create
