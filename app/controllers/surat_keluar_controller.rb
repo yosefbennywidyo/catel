@@ -46,6 +46,7 @@ class SuratKeluarController < ApplicationController
     # Saving data in the database
     if @surat_keluar.save
       # Redirect the user to the show action
+      flash[:notice] = "Surat keluar berhasil dibuat"
       redirect_to @surat_keluar
     else
       render 'new'
