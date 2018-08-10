@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Catel is an acronym for Catatan Elektronik
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Start Development
+1. Clone this project:
+  ```
+  git clone git@github.com:fybwid/catel.git
+  ```
+2. Install Gem
+  ```
+  bundle install
+  ```
+3. Prepare the Database
+  ```
+  rails db:setup
+  ```
+  > Make sure PostgreSql running `sudo service postgresql start`
+4. Run the server
+  ```
+  rails s
+  ```
